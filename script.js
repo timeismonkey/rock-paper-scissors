@@ -61,5 +61,4 @@ buttons.forEach((button) => {
         
         console.log(playRound(playerChoice, computerChoice));
     })
-    //console.log(button);
 })
