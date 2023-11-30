@@ -12,35 +12,35 @@
  }
 
  // Simulate a single round of rock paper scissors, taking playerSelection and computerSelection as input
- function playRound(playerSelection, computerSelection) {
+ function playRound(playerChoice, computerChoice) {
      // Convert input to lowercase 
-     playerSelection = playerSelection.toLowerCase()
-     computerSelection = computerSelection.toLowerCase()
+     playerChoice = playerChoice.toLowerCase()
+     computerChoice = computerChoice.toLowerCase()
 
      // Go through each possible outcome
-     if (playerSelection === "rock" && computerSelection === "paper") {
+     if (playerChoice === "rock" && computerChoice === "paper") {
         // Increment the score of winning party
          computerScore++
         //  Return a string explaining the result of the round
          return "Computer wins this round! Paper beats rock.";
      }
-     else if (playerSelection === "rock" && computerSelection === "scissors") {
+     else if (playerChoice === "rock" && computerChoice === "scissors") {
          playerScore++
          return "Player wins this round! Rock beats scissors.";
      }
-     else if (playerSelection === "paper" && computerSelection === "rock") {
+     else if (playerChoice === "paper" && computerChoice === "rock") {
          playerScore++
          return "Player wins this round! Paper beats rock.";
      }
-     else if (playerSelection === "paper" && computerSelection === "scissors") {
+     else if (playerChoice === "paper" && computerChoice === "scissors") {
          computerScore++
          return "Computer wins this round! Scissors beats paper.";
      }
-     else if (playerSelection === "scissors" && computerSelection === "rock") {
+     else if (playerChoice === "scissors" && computerChoice === "rock") {
          computerScore++
          return "Computer wins this round. Rock beats scissors.";
      }
-     else if (playerSelection === "scissors" && computerSelection === "paper") {
+     else if (playerChoice === "scissors" && computerChoice=== "paper") {
          playerScore++
          return "Player wins this round. Scissors beats paper.";
      }
@@ -49,28 +49,16 @@
      }
  }
 
- // Simulate 5 rounds, keeping track of score
- function game() {
-     // Run 5 times
-     for (let i = 0; i < 5; i++) {
-         // Ask player for selection
-         let playerSelection = prompt("Rock, Paper or Scissors...");
-         // Get computers selection
-         let computerSelection = getComputerChoice();
-         
-         // Simulate a round, saving result to result
-         let result = playRound(playerSelection, computerSelection);
-         console.log(result)
-     }
+// Add event listener calling playRound for each button
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
 
-     // Compare scores, printing the winner
-     if (playerScore > computerScore) {
-         return "Player wins!"
-     } else if (computerScore > playerScore) {
-         return "Computer wins!"
-     } else {
-         return "It is a tie!"
-     } 
- }
+buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+        //console.log(`Current Target: ${event.target.textContent}`);
+        const computerChoice = getComputerChoice();
+        const playerChoice = event.target.textContent;
 
-console.log(game())
+    })
+    //console.log(button);
+})
