@@ -55,10 +55,11 @@ console.log(buttons);
 
 buttons.forEach((button) => {
         button.addEventListener("click", (event) => {
-        //console.log(`Current Target: ${event.target.textContent}`);
         const computerChoice = getComputerChoice();
+        console.log(computerChoice);
         const playerChoice = event.target.textContent;
-
+        
+        console.log(playRound(playerChoice, computerChoice));
     })
     //console.log(button);
 })
