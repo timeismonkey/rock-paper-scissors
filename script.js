@@ -54,10 +54,12 @@ function getWinner () {
 }
 
 // Reset game
+function reset(){
+    
+}
 
 // Simulate playing a round when a button is pressed
 const buttons = document.querySelectorAll("button");
-
 buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
         const computerChoice = getComputerChoice();
@@ -72,22 +74,24 @@ buttons.forEach((button) => {
         // Check if winner
         if (checkForWinner()) {
             if (getWinner() === "computer"){
-                winner = "Computer wins!"
+                // winner = "Computer wins!"
                 setTimeout(() => {
                     window.alert("Computer wins!")
                 }, 0);
+                // Reset game
             } else {
-                winner = "You win!"
+                // winner = "You win!"
                 setTimeout(() => {
                     window.alert("Player wins!")
                 }, 0);
+                // Reset game
             }
             // End game
         } else {
             // resultElement.textContent = result;
             winner = result;
         }
-        
+        // Show winner
         resultElement.textContent = winner;
     })
 })
