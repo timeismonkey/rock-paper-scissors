@@ -5,8 +5,26 @@ body {
 .container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
+/* header */
+.header {
+    background-color: yellow;
+    width: 100%;
+    text-align: center;
+}
+
+.header > h1 {
+}
+
+/* results */
 .play-again {
     display: none;
 }
+
+/* buttons */
+
+/* score */
+
+/* footer */

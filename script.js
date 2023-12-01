@@ -4,15 +4,15 @@ let winner;
 const resultElement = document.querySelector(".result");
 const playAgainButton = document.querySelector(".play-again")
 
- // Randomly generate a choice between: Rock, Paper and Scissors
+ // Randomly generate a choice between: apple, banana and churro
  function getComputerChoice(){
-     const choices = ["rock", "paper", "scissors"];
+     const choices = ["apple", "banana", "churro"];
      // Get a random index between 0 and 2
      const randElement = choices[Math.floor(Math.random() * choices.length)]; 
      return randElement;
  }
 
-// Simulate a single round of rock paper scissors, taking playerSelection and computerSelection as input
+// Simulate a single round of apple banana churro, taking playerSelection and computerSelection as input
 function playRound(playerChoice, computerChoice) {
     // Convert input to lowercase 
     playerChoice = playerChoice.toLowerCase()
@@ -20,9 +20,9 @@ function playRound(playerChoice, computerChoice) {
 
     // Computer wins
     if (
-        (playerChoice === "rock" && computerChoice === "paper") ||
-        (playerChoice === "paper" && computerChoice === "scissors") ||
-        (playerChoice === "scissors" && computerChoice === "rock")
+        (playerChoice === "apple" && computerChoice === "banana") ||
+        (playerChoice === "banana" && computerChoice === "churro") ||
+        (playerChoice === "churro" && computerChoice === "apple")
     ) {
         // Increment the score of winning party
         computerScore++;
@@ -30,9 +30,9 @@ function playRound(playerChoice, computerChoice) {
     }
     // Player wins
     else if (
-        (playerChoice === "rock" && computerChoice === "scissors") ||
-        (playerChoice === "paper" && computerChoice === "rock") ||
-        (playerChoice === "scissors" && computerChoice=== "paper")
+        (playerChoice === "apple" && computerChoice === "churro") ||
+        (playerChoice === "banana" && computerChoice === "apple") ||
+        (playerChoice === "churro" && computerChoice=== "banana")
     ) {
         playerScore++;
         return `Player wins this round! ${playerChoice} beats ${computerChoice}.`;
