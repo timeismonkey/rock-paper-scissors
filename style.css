@@ -10,20 +10,27 @@ body {
 
 /* header */
 .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #87c7ad;
     width: 100%;
-    text-align: center;
-}
+    height: 10rem;
+    /* text-align: center; */
+} 
 
-.header > h1 {
+#apple, #banana, #churro {
+    font-size: 4rem;
 }
 
 #apple {
     color: red;
+    margin-right: 1rem;
 }
 
 #banana {
     color: yellow;
+    margin-right: 1rem;
 }
 
 #churro {
