@@ -10,12 +10,24 @@ body {
 
 /* header */
 .header {
-    background-color: yellow;
+    background-color: #87c7ad;
     width: 100%;
     text-align: center;
 }
 
 .header > h1 {
+}
+
+#apple {
+    color: red;
+}
+
+#banana {
+    color: yellow;
+}
+
+#churro {
+    color: #F6D2AA
 }
 
 /* results */
