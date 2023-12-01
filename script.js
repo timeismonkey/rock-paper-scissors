@@ -1,6 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
 let winner;
+const resultElement = document.querySelector(".result");
+const playAgainButton = document.querySelector(".play-again")
 
  // Randomly generate a choice between: Rock, Paper and Scissors
  function getComputerChoice(){
@@ -53,6 +55,13 @@ function getWinner () {
     return "player"
 }
 
+// Show game winner
+function showGameWinner(winner) {
+    // Update results sections to show winner and play again button
+    resultElement.textContent = winner;
+    playAgainButton.style.display = "block";
+}
+
 // Reset game
 function reset(){
     
@@ -64,7 +73,6 @@ buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
         const computerChoice = getComputerChoice();
         const playerChoice = event.target.textContent;
-        const resultElement = document.querySelector(".result");
         const result = playRound(playerChoice, computerChoice);
         const playerScoreElement = document.querySelector(".player-score");
         const computerScoreElement = document.querySelector(".computer-score");
@@ -74,15 +82,13 @@ buttons.forEach((button) => {
         // Check if winner
         if (checkForWinner()) {
             if (getWinner() === "computer"){
-                // winner = "Computer wins!"
                 setTimeout(() => {
-                    window.alert("Computer wins!")
+                    showGameWinner("Computer wins!")
                 }, 0);
                 // Reset game
             } else {
-                // winner = "You win!"
                 setTimeout(() => {
-                    window.alert("Player wins!")
+                    showGameWinner("You won!")
                 }, 0);
                 // Reset game
             }
@@ -90,8 +96,9 @@ buttons.forEach((button) => {
         } else {
             // resultElement.textContent = result;
             winner = result;
+            // Show round winner
+            resultElement.textContent = winner;
         }
-        // Show winner
-        resultElement.textContent = winner;
+
     })
 })
