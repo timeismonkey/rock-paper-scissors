@@ -49,16 +49,19 @@
      }
  }
 
-// Add event listener calling playRound for each button
+// Simulate playing a round when a button is pressed
 const buttons = document.querySelectorAll("button");
 console.log(buttons);
 
 buttons.forEach((button) => {
-        button.addEventListener("click", (event) => {
+    button.addEventListener("click", (event) => {
         const computerChoice = getComputerChoice();
         console.log(computerChoice);
         const playerChoice = event.target.textContent;
-        
-        console.log(playRound(playerChoice, computerChoice));
+
+        // Display results
+        const result = document.querySelector(".result");
+        result.textContent = playRound(playerChoice, computerChoice);
     })
 })
+
