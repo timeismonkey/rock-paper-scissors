@@ -17,32 +17,18 @@
      playerChoice = playerChoice.toLowerCase()
      computerChoice = computerChoice.toLowerCase()
 
-     // Go through each possible outcome
-     if (playerChoice === "rock" && computerChoice === "paper") {
+     // Computer wins
+     if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissors")
+     || (playerChoice === "scissors" && computerChoice === "rock") ) {
         // Increment the score of winning party
          computerScore++
-        //  Return a string explaining the result of the round
-         return "Computer wins this round! Paper beats rock.";
+         return `Computer wins this round! ${computerChoice} beats ${playerChoice}.`;
      }
-     else if (playerChoice === "rock" && computerChoice === "scissors") {
+    // Player wins
+     else if (playerChoice === "rock" && computerChoice === "scissors" || (playerChoice === "paper" && computerChoice === "rock")
+     || (playerChoice === "scissors" && computerChoice=== "paper")) {
          playerScore++
-         return "Player wins this round! Rock beats scissors.";
-     }
-     else if (playerChoice === "paper" && computerChoice === "rock") {
-         playerScore++
-         return "Player wins this round! Paper beats rock.";
-     }
-     else if (playerChoice === "paper" && computerChoice === "scissors") {
-         computerScore++
-         return "Computer wins this round! Scissors beats paper.";
-     }
-     else if (playerChoice === "scissors" && computerChoice === "rock") {
-         computerScore++
-         return "Computer wins this round. Rock beats scissors.";
-     }
-     else if (playerChoice === "scissors" && computerChoice=== "paper") {
-         playerScore++
-         return "Player wins this round. Scissors beats paper.";
+         return `Player wins this round! ${playerChoice} beats ${computerChoice}.`;
      }
      else {
          return "Tie"; 
