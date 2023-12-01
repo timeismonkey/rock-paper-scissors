@@ -99,6 +99,5 @@ buttons.forEach((button) => {
             // Show round winner
             resultElement.textContent = winner;
         }
-
     })
 })
