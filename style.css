@@ -5,7 +5,9 @@ body {
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    height: 100vh;
 }
 
 /* header */
@@ -36,6 +38,13 @@ body {
     color: #F6D2AA
 }
 
+.body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* results */
 .result-container {
     display: flex;
@@ -44,11 +53,22 @@ body {
     text-align: center;
     height: 10rem;
 }
+
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
 .play-again {
     display: none;
 }
 
 /* buttons */
+.buttons {
+    text-align: center;
+}
 
 /* score */
 

@@ -7,8 +7,6 @@ resultElement.className = "result";
 const playAgainButton = document.createElement("button");
 playAgainButton.className = "play-again"; 
 
-// const playAgainButton = document.querySelector(".play-again")
-
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
@@ -68,7 +66,6 @@ function getWinner () {
 function showGameWinner(winner) {
     // Update results sections to show winner and play again button
     resultElement.textContent = winner;
-    // playAgainButton.style.display = "block";
     resultContainer.appendChild(playAgainButton);
 }
 
@@ -110,7 +107,6 @@ buttons.forEach((button) => {
             // Show round winner
             resultContainer.innerHTML = "";
             resultContainer.appendChild(resultElement);
-            
         }
     })
 })
