@@ -9,6 +9,8 @@ const playAgainButton = document.createElement("button");
 playAgainButton.className = "play-again"; 
 playAgainButton.textContent = "Play again";
 const buttons = document.querySelectorAll(".choice");
+const playerScoreElement = document.querySelector(".player-score");
+const computerScoreElement = document.querySelector(".computer-score");
 
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -78,17 +80,25 @@ function disableButtons() {
     })
 }
 
+function enableButtons() {
+    buttons.forEach((button) => {
+        button.disabled = false;
+    })
+}
 // Reset game
-function reset(e){
+function reset(e) {
     playerScore = 0;
     computerScore = 0;
     resultContainer.innerHTML = "";
     resultContainer.appendChild(welcoming);
+    playerScoreElement.textContent = playerScore;
+    computerScoreElement.textContent = computerScore;
+    enableButtons();
 }
 
 playAgainButton.addEventListener("click", (e) => {
     reset(e);
-})
+});
 
 // Simulate playing a round when a button is pressed
 buttons.forEach((button) => {
@@ -96,8 +106,6 @@ buttons.forEach((button) => {
         const computerChoice = getComputerChoice();
         const playerChoice = event.target.textContent;
         const result = playRound(playerChoice, computerChoice);
-        const playerScoreElement = document.querySelector(".player-score");
-        const computerScoreElement = document.querySelector(".computer-score");
         playerScoreElement.textContent = playerScore;
         computerScoreElement.textContent = computerScore;
 
@@ -106,9 +114,7 @@ buttons.forEach((button) => {
             setTimeout(() => {
                 showGameWinner(getWinner());
             }, 0);
-            // Reset game
             disableButtons();
-            // End game
         } else {
             // resultElement.textContent = result;
             winner = result;
@@ -118,4 +124,4 @@ buttons.forEach((button) => {
             resultContainer.appendChild(resultElement);
         }
     })
-})
+});
