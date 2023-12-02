@@ -1,8 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
 let winner;
-const resultElement = document.querySelector(".result");
-const playAgainButton = document.querySelector(".play-again")
+const resultContainer = document.querySelector(".result-container");
+const resultElement = document.createElement("div");
+resultElement.className = "result";
+const playAgainButton = document.createElement("button");
+playAgainButton.className = "play-again"; 
+
+// const playAgainButton = document.querySelector(".play-again")
 
  // Randomly generate a choice between: apple, banana and churro
  function getComputerChoice(){
@@ -59,7 +64,8 @@ function getWinner () {
 function showGameWinner(winner) {
     // Update results sections to show winner and play again button
     resultElement.textContent = winner;
-    playAgainButton.style.display = "block";
+    // playAgainButton.style.display = "block";
+    resultContainer.appendChild(playAgainButton);
 }
 
 // Reset game
@@ -96,8 +102,11 @@ buttons.forEach((button) => {
         } else {
             // resultElement.textContent = result;
             winner = result;
-            // Show round winner
             resultElement.textContent = winner;
+            // Show round winner
+            resultContainer.innerHTML = "";
+            resultContainer.appendChild(resultElement);
+            
         }
     })
 })
