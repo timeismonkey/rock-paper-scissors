@@ -9,6 +9,10 @@ playAgainButton.className = "play-again";
 
 // const playAgainButton = document.querySelector(".play-again")
 
+function firstLetterUpper(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
  // Randomly generate a choice between: apple, banana and churro
  function getComputerChoice(){
      const choices = ["apple", "banana", "churro"];
@@ -31,7 +35,7 @@ function playRound(playerChoice, computerChoice) {
     ) {
         // Increment the score of winning party
         computerScore++;
-        return `Computer wins this round! ${computerChoice} beats ${playerChoice}.`;
+        return `Computer wins this round! ${firstLetterUpper(computerChoice)} beats ${firstLetterUpper(playerChoice)}.`;
     }
     // Player wins
     else if (
@@ -40,7 +44,7 @@ function playRound(playerChoice, computerChoice) {
         (playerChoice === "churro" && computerChoice=== "banana")
     ) {
         playerScore++;
-        return `Player wins this round! ${playerChoice} beats ${computerChoice}.`;
+        return `Player wins this round! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
     }
     else {
         return "Tie"; 
