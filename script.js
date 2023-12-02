@@ -1,11 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
 let winner;
+const welcoming = document.querySelector(".welcome");
 const resultContainer = document.querySelector(".result-container");
 const resultElement = document.createElement("div");
 resultElement.className = "result";
 const playAgainButton = document.createElement("button");
 playAgainButton.className = "play-again"; 
+const buttons = document.querySelectorAll(".choice");
 
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -57,25 +59,37 @@ function checkForWinner() {
 // Get winner
 function getWinner () {
     if (computerScore === 5) {
-        return "computer"
+        return "Computer Wins!"
     }
-    return "player"
+    return "You Win!"
 }
 
 // Show game winner
 function showGameWinner(winner) {
     // Update results sections to show winner and play again button
     resultElement.textContent = winner;
-    resultContainer.appendChild(playAgainButton);
+    resultContainer.appendChild(playAgainButton);    
+}
+
+function disableButtons() {
+    buttons.forEach((button) => {
+        button.disabled = true;
+    })
 }
 
 // Reset game
-function reset(){
-    
+function reset(e){
+    playerScore = 0;
+    computerScore = 0;
+    resultContainer.innerHTML = "";
+    resultContainer.appendChild(welcoming);
 }
 
+playAgainButton.addEventListener("click", (e) => {
+    reset(e);
+})
+
 // Simulate playing a round when a button is pressed
-const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", (event) => {
         const computerChoice = getComputerChoice();
@@ -88,17 +102,11 @@ buttons.forEach((button) => {
 
         // Check if winner
         if (checkForWinner()) {
-            if (getWinner() === "computer"){
-                setTimeout(() => {
-                    showGameWinner("Computer wins!")
-                }, 0);
-                // Reset game
-            } else {
-                setTimeout(() => {
-                    showGameWinner("You won!")
-                }, 0);
-                // Reset game
-            }
+            setTimeout(() => {
+                showGameWinner(getWinner());
+            }, 0);
+            // Reset game
+            disableButtons();
             // End game
         } else {
             // resultElement.textContent = result;
