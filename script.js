@@ -7,6 +7,7 @@ const resultElement = document.createElement("div");
 resultElement.className = "result";
 const playAgainButton = document.createElement("button");
 playAgainButton.className = "play-again"; 
+playAgainButton.textContent = "Play again";
 const buttons = document.querySelectorAll(".choice");
 
 function firstLetterUpper(word) {
