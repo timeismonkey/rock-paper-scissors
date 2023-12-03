@@ -1,76 +1,127 @@
- // Keep track of score
- let playerScore = 0
- let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
+let winner;
+const welcoming = document.querySelector(".welcome");
+const resultContainer = document.querySelector(".result-container");
+const resultElement = document.createElement("div");
+resultElement.className = "result";
+const playAgainButton = document.createElement("button");
+playAgainButton.className = "play-again"; 
+playAgainButton.textContent = "Play again";
+const buttons = document.querySelectorAll(".choice");
+const playerScoreElement = document.querySelector(".player-score");
+const computerScoreElement = document.querySelector(".computer-score");
 
+function firstLetterUpper(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+}
 
- // Randomly generate a choice between: Rock, Paper and Scissors
+ // Randomly generate a choice between: apple, banana and churro
  function getComputerChoice(){
-     const choices = ["rock", "paper", "scissors"];
+     const choices = ["apple", "banana", "churro"];
      // Get a random index between 0 and 2
      const randElement = choices[Math.floor(Math.random() * choices.length)]; 
      return randElement;
  }
 
- // Simulate a single round of rock paper scissors, taking playerSelection and computerSelection as input
- function playRound(playerSelection, computerSelection) {
-     // Convert input to lowercase 
-     playerSelection = playerSelection.toLowerCase()
-     computerSelection = computerSelection.toLowerCase()
+// Simulate a single round of apple banana churro, taking playerSelection and computerSelection as input
+function playRound(playerChoice, computerChoice) {
+    // Convert input to lowercase 
+    playerChoice = playerChoice.toLowerCase()
+    computerChoice = computerChoice.toLowerCase()
 
-     // Go through each possible outcome
-     if (playerSelection === "rock" && computerSelection === "paper") {
+    // Computer wins
+    if (
+        (playerChoice === "apple" && computerChoice === "banana") ||
+        (playerChoice === "banana" && computerChoice === "churro") ||
+        (playerChoice === "churro" && computerChoice === "apple")
+    ) {
         // Increment the score of winning party
-         computerScore++
-        //  Return a string explaining the result of the round
-         return "Computer wins this round! Paper beats rock.";
-     }
-     else if (playerSelection === "rock" && computerSelection === "scissors") {
-         playerScore++
-         return "Player wins this round! Rock beats scissors.";
-     }
-     else if (playerSelection === "paper" && computerSelection === "rock") {
-         playerScore++
-         return "Player wins this round! Paper beats rock.";
-     }
-     else if (playerSelection === "paper" && computerSelection === "scissors") {
-         computerScore++
-         return "Computer wins this round! Scissors beats paper.";
-     }
-     else if (playerSelection === "scissors" && computerSelection === "rock") {
-         computerScore++
-         return "Computer wins this round. Rock beats scissors.";
-     }
-     else if (playerSelection === "scissors" && computerSelection === "paper") {
-         playerScore++
-         return "Player wins this round. Scissors beats paper.";
-     }
-     else {
-         return "Tie"; 
-     }
- }
+        computerScore++;
+        return `Computer wins this round! ${firstLetterUpper(computerChoice)} beats ${firstLetterUpper(playerChoice)}.`;
+    }
+    // Player wins
+    else if (
+        (playerChoice === "apple" && computerChoice === "churro") ||
+        (playerChoice === "banana" && computerChoice === "apple") ||
+        (playerChoice === "churro" && computerChoice=== "banana")
+    ) {
+        playerScore++;
+        return `Player wins this round! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
+    }
+    else {
+        return "Tie"; 
+    }
+}
 
- // Simulate 5 rounds, keeping track of score
- function game() {
-     // Run 5 times
-     for (let i = 0; i < 5; i++) {
-         // Ask player for selection
-         let playerSelection = prompt("Rock, Paper or Scissors...");
-         // Get computers selection
-         let computerSelection = getComputerChoice();
-         
-         // Simulate a round, saving result to result
-         let result = playRound(playerSelection, computerSelection);
-         console.log(result)
-     }
+// Check for winner
+function checkForWinner() {
+    return computerScore === 5 || playerScore === 5
+}
 
-     // Compare scores, printing the winner
-     if (playerScore > computerScore) {
-         return "Player wins!"
-     } else if (computerScore > playerScore) {
-         return "Computer wins!"
-     } else {
-         return "It is a tie!"
-     } 
- }
+// Get winner
+function getWinner () {
+    if (computerScore === 5) {
+        return "Computer Wins!"
+    }
+    return "You Win!"
+}
 
-console.log(game())
+// Show game winner
+function showGameWinner(winner) {
+    // Update results sections to show winner and play again button
+    resultElement.textContent = winner;
+    resultContainer.appendChild(playAgainButton);    
+}
+
+function disableButtons() {
+    buttons.forEach((button) => {
+        button.disabled = true;
+    })
+}
+
+function enableButtons() {
+    buttons.forEach((button) => {
+        button.disabled = false;
+    })
+}
+// Reset game
+function reset(e) {
+    playerScore = 0;
+    computerScore = 0;
+    resultContainer.innerHTML = "";
+    resultContainer.appendChild(welcoming);
+    playerScoreElement.textContent = playerScore;
+    computerScoreElement.textContent = computerScore;
+    enableButtons();
+}
+
+playAgainButton.addEventListener("click", (e) => {
+    reset(e);
+});
+
+// Simulate playing a round when a button is pressed
+buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        const computerChoice = getComputerChoice();
+        const playerChoice = event.target.textContent;
+        const result = playRound(playerChoice, computerChoice);
+        playerScoreElement.textContent = playerScore;
+        computerScoreElement.textContent = computerScore;
+
+        // Check if winner
+        if (checkForWinner()) {
+            setTimeout(() => {
+                showGameWinner(getWinner());
+            }, 0);
+            disableButtons();
+        } else {
+            // resultElement.textContent = result;
+            winner = result;
+            resultElement.textContent = winner;
+            // Show round winner
+            resultContainer.innerHTML = "";
+            resultContainer.appendChild(resultElement);
+        }
+    })
+});

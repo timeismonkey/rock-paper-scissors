@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #87c7ad;
+    width: 100%;
+    height: 10rem;
+} 
+
+#apple, #banana, #churro {
+    font-size: 4rem;
+}
+
+#apple {
+    color: red;
+    margin-right: 1rem;
+}
+
+#banana {
+    color: yellow;
+    margin-right: 1rem;
+}
+
+#churro {
+    color: #F6D2AA
+}
+
+.body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* results */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 10rem;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+/* buttons */
+.buttons {
+    text-align: center;
+}
+
+/* score */
+
+/* footer */
