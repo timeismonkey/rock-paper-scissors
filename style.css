@@ -52,6 +52,13 @@ body {
     justify-content: center;
     text-align: center;
     height: 10rem;
+    background-color: #C787A1;
+    color: yellow;
+    padding: 2rem 10rem;
+}
+
+.welcome {
+
 }
 
 .score {
@@ -85,3 +92,12 @@ body {
 /* score */
 
 /* footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.signature {
+    color: #8a8986;
+}
