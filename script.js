@@ -47,7 +47,7 @@ function playRound(playerChoice, computerChoice) {
         (playerChoice === "churro" && computerChoice=== "banana")
     ) {
         playerScore++;
-        return `Player wins this round! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
+        return `You wins this round! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
     }
     else {
         return "Tie"; 

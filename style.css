@@ -43,6 +43,8 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: beige;
+    border: #87c7ad solid 10px;
+    width: 45rem;
 }
 
 /* result-container */
@@ -51,10 +53,12 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height: 10rem;
+    padding: 2rem 10rem;
+    height: 7rem;
     background-color: #C787A1;
     color: yellow;
-    padding: 2rem 10rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .welcome {
@@ -88,13 +92,21 @@ body {
 .buttons {
     text-align: center;
     margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 .choice {
     text-decoration: none;
     background: none;
     border: none;
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.2);
 }
 
 #banana-btn, #apple-btn {
