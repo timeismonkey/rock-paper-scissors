@@ -77,6 +77,8 @@ function showGameWinner(winner) {
 function disableButtons() {
     buttons.forEach((button) => {
         button.disabled = true;
+        button.classList.remove('grow');
+        button.style.opacity = "0.5";
     })
 }
 
