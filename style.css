@@ -54,7 +54,7 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 2rem 10rem;
+    padding: 3rem 10rem;
     height: 7rem;
     background-color: #C787A1;
     color: yellow;
@@ -63,7 +63,19 @@ body {
 }
 
 .welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.welcome > h3 {
+    margin: 1.2rem;
+}
+
+#pick-food {
+    width: fit-content;
+    padding: .2rem .5rem;
+    font-size: 1.2rem;
 }
 
 /* score */
