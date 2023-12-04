@@ -1,16 +1,18 @@
-let playerScore = 0;
-let computerScore = 0;
-let winner;
 const welcoming = document.querySelector(".welcome");
 const resultContainer = document.querySelector(".result-container");
+const buttons = document.querySelectorAll(".choice");
+const playerScoreElement = document.querySelector(".player-score");
+const computerScoreElement = document.querySelector(".computer-score");
+
 const resultElement = document.createElement("div");
 resultElement.className = "result";
 const playAgainButton = document.createElement("button");
 playAgainButton.className = "play-again"; 
 playAgainButton.textContent = "Play again";
-const buttons = document.querySelectorAll(".choice");
-const playerScoreElement = document.querySelector(".player-score");
-const computerScoreElement = document.querySelector(".computer-score");
+
+let playerScore = 0;
+let computerScore = 0;
+let winner;
 
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
