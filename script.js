@@ -5,9 +5,13 @@ const playerScoreElement = document.querySelector(".player-score");
 const computerScoreElement = document.querySelector(".computer-score");
 const playerTracker = document.querySelector(".player-tracker");
 const computerTracker = document.querySelector(".computer-tracker");
-const appleImg = document.querySelector(".apple").outerHTML;
-const bananaImg = document.querySelector(".banana").outerHTML;
-const churroImg = document.querySelector(".churro").outerHTML;
+const appleImg = document.querySelector(".apple");
+const appleImgString = document.querySelector(".apple").outerHTML;
+const bananaImg = document.querySelector(".banana");
+const bananaImgString = document.querySelector(".banana").outerHTML;
+const churroImg = document.querySelector(".churro");
+const churroImgString = document.querySelector(".churro").outerHTML;
+
 
 const resultElement = document.createElement("div");
 resultElement.className = "result";
@@ -18,6 +22,7 @@ playAgainButton.textContent = "Play again";
 let playerScore = 0;
 let computerScore = 0;
 let winner;
+
 
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -64,15 +69,15 @@ function playRound(playerChoice, computerChoice) {
 // Update tracker
 function updateTracker(computerChoice, playerChoice) {
     if ((computerChoice === "apple") || (playerChoice === "apple")) {
-        computerChoice === "apple" ? computerTracker.innerHTML += appleImg : playerTracker.innerHTML += appleImg;
+        computerChoice === "apple" ? computerTracker.innerHTML += appleImgString : playerTracker.innerHTML += appleImgString;
         return;
     } 
     if ((computerChoice === "banana") || (playerChoice === "banana")) {
-        computerChoice === "banana" ? computerTracker.innerHTML += bananaImg : playerTracker.innerHTML += bananaImg;
+        computerChoice === "banana" ? computerTracker.innerHTML += bananaImgString : playerTracker.innerHTML += bananaImgString;
         return;
     }
     if ((computerChoice === "churro") || (playerChoice === "churro")) {
-        computerChoice === "churro" ? computerTracker.innerHTML += churroImg : playerTracker.innerHTML += churroImg;
+        computerChoice === "churro" ? computerTracker.innerHTML += churroImgString : playerTracker.innerHTML += churroImgString;
         return;
     }
 }

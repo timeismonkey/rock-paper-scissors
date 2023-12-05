@@ -131,7 +131,16 @@ body {
     width: 8rem;
 }
 
-/* score */
+/* tracker */
+.tracker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-tracker > img, .computer-tracker > img {
+    height: 1rem;
+    width: 1rem;
+}
 
 /* footer */
 .footer {
