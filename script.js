@@ -3,6 +3,11 @@ const resultContainer = document.querySelector(".result-container");
 const buttons = document.querySelectorAll(".choice");
 const playerScoreElement = document.querySelector(".player-score");
 const computerScoreElement = document.querySelector(".computer-score");
+const playerTracker = document.querySelector(".player-tracker");
+const computerTracker = document.querySelector(".computer-tracker");
+const appleImg = document.querySelector(".apple").outerHTML;
+const bananaImg = document.querySelector(".banana").outerHTML;
+const churroImg = document.querySelector(".churro").outerHTML;
 
 const resultElement = document.createElement("div");
 resultElement.className = "result";
@@ -53,6 +58,22 @@ function playRound(playerChoice, computerChoice) {
     }
     else {
         return "Tie"; 
+    }
+}
+
+// Update tracker
+function updateTracker(computerChoice, playerChoice) {
+    if ((computerChoice === "apple") || (playerChoice === "apple")) {
+        computerChoice === "apple" ? computerTracker.innerHTML += appleImg : playerTracker.innerHTML += appleImg;
+        return;
+    } 
+    if ((computerChoice === "banana") || (playerChoice === "banana")) {
+        computerChoice === "banana" ? computerTracker.innerHTML += bananaImg : playerTracker.innerHTML += bananaImg;
+        return;
+    }
+    if ((computerChoice === "churro") || (playerChoice === "churro")) {
+        computerChoice === "churro" ? computerTracker.innerHTML += churroImg : playerTracker.innerHTML += churroImg;
+        return;
     }
 }
 
@@ -112,6 +133,9 @@ buttons.forEach((button) => {
         const result = playRound(playerChoice, computerChoice);
         playerScoreElement.textContent = playerScore;
         computerScoreElement.textContent = computerScore;
+
+        // Update player/computer tracker
+        updateTracker(computerChoice, playerChoice);
 
         // Check if winner
         if (checkForWinner()) {
