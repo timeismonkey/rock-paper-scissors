@@ -69,16 +69,28 @@ function playRound(playerChoice, computerChoice) {
 // Update tracker
 function updateTracker(computerChoice, playerChoice) {
     if ((computerChoice === "apple") || (playerChoice === "apple")) {
+        if (computerChoice === playerChoice) {
+            computerTracker.innerHTML += appleImgString;
+            playerTracker.innerHTML += appleImgString;
+            return
+        }
         computerChoice === "apple" ? computerTracker.innerHTML += appleImgString : playerTracker.innerHTML += appleImgString;
-        return;
     } 
     if ((computerChoice === "banana") || (playerChoice === "banana")) {
+        if (computerChoice === playerChoice) {
+            computerTracker.innerHTML += bananaImgString;
+            playerTracker.innerHTML += bananaImgString;
+            return
+        }
         computerChoice === "banana" ? computerTracker.innerHTML += bananaImgString : playerTracker.innerHTML += bananaImgString;
-        return;
     }
     if ((computerChoice === "churro") || (playerChoice === "churro")) {
+        if (computerChoice === playerChoice) {
+            computerTracker.innerHTML += churroImgString;
+            playerTracker.innerHTML += churroImgString;
+            return
+        }
         computerChoice === "churro" ? computerTracker.innerHTML += churroImgString : playerTracker.innerHTML += churroImgString;
-        return;
     }
 }
 
