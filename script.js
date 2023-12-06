@@ -16,7 +16,7 @@ const churroImgString = document.querySelector(".churro").outerHTML;
 const resultElement = document.createElement("div");
 resultElement.className = "result";
 const playAgainButton = document.createElement("button");
-playAgainButton.className = "play-again"; 
+playAgainButton.className = "play-again grow";
 playAgainButton.textContent = "Play again";
 
 let playerScore = 0;

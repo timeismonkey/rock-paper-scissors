@@ -78,6 +78,18 @@ body {
     font-size: 1.2rem;
 }
 
+.play-again {
+    width: fit-content;
+    align-self: center;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    font-weight: 800;
+    color: white;
+    background-color: #87c7ad;
+    border: 3px solid yellow;
+    border-radius: 5px;
+}
+
 /* score */
 .score {
     display: flex;
