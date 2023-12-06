@@ -21,8 +21,6 @@ playAgainButton.textContent = "Play again";
 
 let playerScore = 0;
 let computerScore = 0;
-let winner;
-
 
 function firstLetterUpper(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -50,7 +48,7 @@ function playRound(playerChoice, computerChoice) {
     ) {
         // Increment the score of winning party
         computerScore++;
-        return `Computer wins this round! ${firstLetterUpper(computerChoice)} beats ${firstLetterUpper(playerChoice)}.`;
+        return `Computer wins! ${firstLetterUpper(computerChoice)} beats ${firstLetterUpper(playerChoice)}.`;
     }
     // Player wins
     else if (
@@ -59,7 +57,7 @@ function playRound(playerChoice, computerChoice) {
         (playerChoice === "churro" && computerChoice=== "banana")
     ) {
         playerScore++;
-        return `You wins this round! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
+        return `You win! ${firstLetterUpper(playerChoice)} beats ${firstLetterUpper(computerChoice)}.`;
     }
     else {
         return "Tie"; 
@@ -125,6 +123,7 @@ function disableButtons() {
 function enableButtons() {
     buttons.forEach((button) => {
         button.disabled = false;
+        button.style.opacity = "1";
     })
 }
 // Reset game
@@ -135,6 +134,8 @@ function reset(e) {
     resultContainer.appendChild(welcoming);
     playerScoreElement.textContent = playerScore;
     computerScoreElement.textContent = computerScore;
+    playerTracker.innerHTML = ""
+    computerTracker.innerHTML = ""
     enableButtons();
 }
 
@@ -161,9 +162,7 @@ buttons.forEach((button) => {
             }, 0);
             disableButtons();
         } else {
-            // resultElement.textContent = result;
-            winner = result;
-            resultElement.textContent = winner;
+            resultElement.textContent = result;
             // Show round winner
             resultContainer.innerHTML = "";
             resultContainer.appendChild(resultElement);
