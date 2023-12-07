@@ -123,6 +123,7 @@ function disableButtons() {
 function enableButtons() {
     buttons.forEach((button) => {
         button.disabled = false;
+        button.classList.add("grow");
         button.style.opacity = "1";
     })
 }
